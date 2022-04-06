@@ -21,6 +21,15 @@ function setup(){
 
 function draw(){
     image(video, 0, 0, 600, 500);
+
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(leftWristX, leftWristY, 20);
+    InNumberleftWristY = Number(leftWristY);
+    remove_decimals = floor(InNumberleftWristY);
+    volume = remove_decimals / 500;
+    document.getElementById("volume").innerHTML = "Volume: " + volume;
+    song.setVolume(volume);
 }
 
 function play(){
@@ -33,7 +42,7 @@ function modelLoaded(){
     console.log('PoseNet has been initialized!');
 }
 
-function gotPoses(){
+function gotPoses(results){
     if(results.length > 0){
         console.log(results);
         // save the left wrist coordinates in variables
